@@ -1,6 +1,8 @@
-# EcoTrip Impact Calculator
 
-Calculadora de emissão de CO₂ para viagens sustentáveis, desenvolvida como desafio durante o bootcamp GitHub Copilot – Código na Prática.
+
+<img width="1000"  alt="image" src="https://github.com/user-attachments/assets/782bdc6f-038c-4ed7-a5e8-faa28db12015" />
+
+
 
 ## Visão Geral
 
