@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar acentos e caracteres especiais -->
+    <meta charset="UTF-8">
+    
+    <!-- Configura a responsividade para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título que aparece na aba do navegador -->
+    <title>Calculadora de Emissão de CO2</title>
+    
+    <!-- Link para o arquivo CSS externo com os estilos da página -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Container principal que envolve todo o conteúdo da página -->
+    <div class="container">
+        
+        <!-- Cabeçalho da página com título e descrição -->
+        <header>
+            <h1>🌍 Calculadora de Emissão de CO2</h1>
+            <p>Calcule a emissão de carbono da sua viagem</p>
+        </header>
+
+        <!-- Conteúdo principal da aplicação -->
+        <main>
+            <!-- Formulário para coleta de dados do usuário -->
+            <form id="co2Form">
+                
+                <!-- Seção 1: Informações de localização e distância -->
+                <div class="section">
+                    <h2>Localização</h2>
+                    
+                    <!-- Campo de entrada para o ponto de origem -->
+                    <div class="form-group">
+                        <label for="pontoA">Ponto A (Origem):</label>
+                        <input type="text" id="pontoA" placeholder="Ex: São Paulo, SP" required>
+                    </div>
+
+                    <!-- Campo de entrada para o ponto de destino -->
+                    <div class="form-group">
+                        <label for="pontoB">Ponto B (Destino):</label>
+                        <input type="text" id="pontoB" placeholder="Ex: Rio de Janeiro, RJ" required>
+                    </div>
+
+                    <!-- Campo numérico para a distância em quilômetros -->
+                    <div class="form-group">
+                        <label for="distancia">Distância (km):</label>
+                        <!-- min="0" impede valores negativos, step="0.1" permite decimais -->
+                        <input type="number" id="distancia" placeholder="Ex: 430" min="0" step="0.1" required>
+                    </div>
+                </div>
+
+                <!-- Seção 2: Seleção do meio de transporte e número de passageiros -->
+                <div class="section">
+                    <h2>Meio de Transporte</h2>
+                    
+                    <!-- Menu dropdown para seleção do meio de transporte -->
+                    <div class="form-group">
+                        <label for="transporte">Selecione o meio de transporte:</label>
+                        <select id="transporte" required>
+                            <option value="">-- Selecione --</option>
+                            <!-- Cada opção tem um valor usado no JavaScript para calcular emissões -->
+                            <option value="carro-gasolina">Carro - Gasolina</option>
+                            <option value="carro-etanol">Carro - Etanol</option>
+                            <option value="carro-diesel">Carro - Diesel</option>
+                            <option value="moto">Motocicleta</option>
+                            <option value="onibus">Ônibus</option>
+                            <option value="aviao">Avião</option>
+                            <option value="trem">Trem</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo numérico para a quantidade de passageiros -->
+                    <div class="form-group">
+                        <label for="passageiros">Número de passageiros:</label>
+                        <!-- value="1" define o valor padrão, min="1" impede zero ou negativos -->
+                        <input type="number" id="passageiros" value="1" min="1" required>
+                    </div>
+                </div>
+
+                <!-- Botão de submissão do formulário -->
+                <button type="submit" class="btn-calcular">Calcular Emissão</button>
+            </form>
+
+            <!-- Área de resultado (inicialmente oculta com classe "hidden") -->
+            <div id="resultado" class="resultado hidden">
+                <h2>Resultado</h2>
+                
+                <!-- Container com os detalhes do resultado -->
+                <div class="resultado-content">
+                    
+                    <!-- Exibe a distância calculada entre os pontos -->
+                    <div class="resultado-item">
+                        <span class="label">Distância:</span>
+                        <span id="resultDistancia" class="value"></span>
+                    </div>
+                    
+                    <!-- Exibe o meio de transporte selecionado -->
+                    <div class="resultado-item">
+                        <span class="label">Meio de Transporte:</span>
+                        <span id="resultTransporte" class="value"></span>
+                    </div>
+                    
+                    <!-- Exibe a emissão total de CO2 da viagem -->
+                    <div class="resultado-item">
+                        <span class="label">Emissão Total:</span>
+                        <span id="resultEmissaoTotal" class="value destaque"></span>
+                    </div>
+                    
+                    <!-- Exibe a emissão de CO2 por passageiro -->
+                    <div class="resultado-item">
+                        <span class="label">Emissão por Passageiro:</span>
+                        <span id="resultEmissaoPassageiro" class="value destaque"></span>
+                    </div>
+                    
+                    <!-- Área para exibir equivalências e contexto sobre a emissão -->
+                    <div class="equivalencia">
+                        <p id="equivalenciaTexto"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé da página com mensagem motivacional -->
+        <footer>
+            <p>💚 Calcule sua pegada de carbono e contribua para um planeta mais sustentável</p>
+        </footer>
+    </div>
+
+    <!-- Link para o arquivo JavaScript externo com a lógica da aplicação -->
+    <script src="script.js"></script>
+</body>
+</html>
